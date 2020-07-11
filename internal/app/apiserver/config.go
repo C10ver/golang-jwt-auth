@@ -2,6 +2,7 @@ package apiserver
 
 import(
 	"github.com/c10ver/jwt-auth-golang/internal/app/store"
+	"os"
 )
 
 type Config struct {
@@ -11,8 +12,13 @@ type Config struct {
 }
 
 func NewConfig() *Config {
+	port := ":5000"
+	if os.Getenv("PORT") == "" {
+		port = ":" + os.Getenv("PORT") 
+	} 
+
 	return &Config{
-		port: ":8080",
+		port: port,
 		logLevel: "debug",
 		store: store.NewCongif(),
 	}
