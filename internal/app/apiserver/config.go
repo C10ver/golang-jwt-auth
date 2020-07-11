@@ -13,7 +13,7 @@ type Config struct {
 
 func NewConfig() *Config {
 	port := ":5000"
-	if os.Getenv("PORT") == "" {
+	if os.Getenv("PORT") != "" {
 		port = ":" + os.Getenv("PORT") 
 	} 
 
